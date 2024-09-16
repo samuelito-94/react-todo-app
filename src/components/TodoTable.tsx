@@ -1,6 +1,13 @@
-import TodoRowItem from './TodoRowItem';
+import React from 'react';
+import {TodoRowItem} from './TodoRowItem';
+import { TodoModel } from '../models/todo-model';
 
-function TodoTable({todos, deleteTodo}) {
+interface Props {
+  todos: TodoModel[],
+  deleteTodo: Function
+}
+
+export const TodoTable: React.FC<Props> = ({todos, deleteTodo})  => {
 
   return (
     
@@ -26,5 +33,3 @@ function TodoTable({todos, deleteTodo}) {
       
   );
 }
-
-export default TodoTable;

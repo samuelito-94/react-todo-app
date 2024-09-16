@@ -1,10 +1,15 @@
+import React from "react";
 import { useState } from "react";
 
-export default (props) => {
+interface Props {
+    addTodo: Function
+}
+
+export const NewTodoForm: React.FC<Props> = (props) => {
     const [description, setDescription] = useState('');
     const [assigned, setAssigned] = useState('');
 
-    const onSubmitTodo = (e) => {
+    const onSubmitTodo = (e: any) => {
         e.preventDefault();
         if (description != '' && assigned != '') {
             props.addTodo(description, assigned);
@@ -22,7 +27,7 @@ export default (props) => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Description</label>
-                    <textarea className="form-control" rows="3" required value={description} onChange={e => setDescription(e.target.value)}></textarea>
+                    <textarea className="form-control" rows={3} required value={description} onChange={e => setDescription(e.target.value)}></textarea>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Todo</button>
             </form>
